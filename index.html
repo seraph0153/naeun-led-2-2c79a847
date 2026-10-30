@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta property="og:type" content="website">
+<meta property="og:title" content="나은필병원 옥외 LED 2차 제안 · 세 가지 시안">
+<meta property="og:description" content="같은 슬로건, 세 가지 연출 — A 키네틱 · B 코너 입체 · C 엑스레이">
+<meta property="og:image" content="https://seraph0153.github.io/naeun-led-2-2c79a847/media/a.jpg">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="500">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<title>나은필 LED 세 가지 시안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Noto+Sans+KR:wght@400..800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: same system as the first proposal page (1200px column, near-black canvas, 120 BPM beat).
+   Hero = kinetic headline + live 3D ㄴ-corner LED that switches between the three versions; then one block per version, a comparison, feedback, the 300 s plan. */
+:root{
+  --bg:#08090a; --panel:#0f1011; --raise:rgba(255,255,255,.025); --raise-2:rgba(255,255,255,.05);
+  --line:rgba(255,255,255,.08); --line-soft:rgba(255,255,255,.05); --nav-bg:rgba(8,9,10,.72);
+  --fg:#f7f8f8; --fg-2:#d0d6e0; --fg-3:#8a8f98; --fg-4:#62666d;
+  --brand:#5e6ad2; --accent:#7170ff; --accent-hover:#828fff; --on-brand:#ffffff;
+  /* emphasis colors carried over from the first proposal */
+  --c1:#8fd3f4; --c2:#3ccb8f; --c3:#5b8cff; --c4:#f2994a; --gold:#e8bf4a;
+  /* one color per version: A kinetic (green), B corner 3D (gold frame), C x-ray (scan blue) */
+  --va:var(--c2); --vb:var(--gold); --vc:var(--c1);
+  --led-bg:#0b0f1a; --led-edge:#04060b; --led-dot:rgba(255,255,255,.07);
+  --f-sans:'Inter','Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --beat:500ms;
+  --ease-out:cubic-bezier(.23,1,.32,1); --ease-io:cubic-bezier(.77,0,.175,1); --ease-back:cubic-bezier(.34,1.56,.64,1);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#f7f8f8; --panel:#ffffff; --raise:rgba(8,9,10,.025); --raise-2:rgba(8,9,10,.05);
+  --line:rgba(8,9,10,.10); --line-soft:rgba(8,9,10,.06); --nav-bg:rgba(247,248,248,.8);
+  --fg:#08090a; --fg-2:#2c3036; --fg-3:#5d626a; --fg-4:#8a8f98;
+  --brand:#5e6ad2; --accent:#5e6ad2; --accent-hover:#4b56c0; --on-brand:#ffffff;
+  --c1:#0b7fb3; --c2:#0b8a5c; --c3:#3560e0; --c4:#c8551f; --gold:#9a6c00; color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#f7f8f8; --panel:#ffffff; --raise:rgba(8,9,10,.025); --raise-2:rgba(8,9,10,.05);
+  --line:rgba(8,9,10,.10); --line-soft:rgba(8,9,10,.06); --nav-bg:rgba(247,248,248,.8);
+  --fg:#08090a; --fg-2:#2c3036; --fg-3:#5d626a; --fg-4:#8a8f98;
+  --brand:#5e6ad2; --accent:#5e6ad2; --accent-hover:#4b56c0; --on-brand:#ffffff;
+  --c1:#0b7fb3; --c2:#0b8a5c; --c3:#3560e0; --c4:#c8551f; --gold:#9a6c00; color-scheme:light;
+}
+/* LED colors never follow the page theme */
+.led{--c1:#8fd3f4;--c2:#3ccb8f;--c3:#6f9bff;--c4:#f2994a;--gold:#e8bf4a}
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-sans);font-size:16px;line-height:1.5;
+  font-feature-settings:"cv01","ss03";-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+h1,h2{text-wrap:balance}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.c1{color:var(--c1)}.c2{color:var(--c2)}.c3{color:var(--c3)}.c4{color:var(--c4)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ── nav ── */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.mark{display:flex;align-items:center;gap:10px;font-weight:590;font-size:15px;letter-spacing:-.01em}
+.mark svg{display:block}
+.nav-links{display:flex;gap:20px;margin-left:auto;font-size:13px;font-weight:510;color:var(--fg-3)}
+.nav-links a{transition:color .15s ease}
+@media (hover:hover) and (pointer:fine){.nav-links a:hover{color:var(--fg)}}
+.btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:6px;font-size:14px;font-weight:510;white-space:nowrap;
+  transition:background-color .15s ease,transform .12s var(--ease-out),border-color .15s ease}
+.btn:active{transform:scale(.97)}
+.btn-brand{background:var(--brand);color:var(--on-brand)}
+.btn-ghost{background:var(--raise);color:var(--fg-2);border:1px solid var(--line)}
+@media (hover:hover) and (pointer:fine){.btn-brand:hover{background:var(--accent-hover)}.btn-ghost:hover{background:var(--raise-2);border-color:var(--fg-4)}}
+@media (max-width:860px){.nav-links{display:none}.nav .btn{margin-left:auto}}
+
+/* ── hero ── */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 30% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 30% 40%,#000 20%,transparent 75%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:80px 64px}
+@media (max-width:920px){.hero .wrap{grid-template-columns:minmax(0,1fr);padding-block:52px 44px;gap:36px}}
+.hero-copy{position:relative;display:flex;flex-direction:column;gap:24px;min-width:0}
+.pill{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;height:28px;padding:0 12px 0 8px;border-radius:9999px;border:1px solid var(--line);
+  font-size:12px;font-weight:510;color:var(--fg-2);background:var(--raise)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--c2);animation:ping calc(var(--beat)*2) var(--ease-out) infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c2) 60%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
+
+.kin{position:relative;font-size:clamp(40px,6.2vw,78px);line-height:1.08;font-weight:640;letter-spacing:-.035em;padding-bottom:.18em}
+.kin .w{position:relative;display:inline-block;color:var(--wc);transition:transform calc(var(--beat)*.6) var(--ease-back)}
+.kin .w.on{transform:translateY(-.06em) scale(1.035)}
+.kin .ch{display:inline-block;animation:kinIn calc(var(--beat)*1.4) var(--ease-out) both;animation-delay:calc(var(--d) * 1ms)}
+@keyframes kinIn{0%{transform:translateX(-.55em) skewX(-16deg);color:var(--fg-4)}55%{color:var(--wc)}100%{transform:none;color:var(--wc)}}
+.kin-bar{position:absolute;left:0;bottom:0;height:.1em;width:100px;border-radius:9999px;background:var(--bc,var(--c1));transform-origin:0 50%;
+  transition:transform calc(var(--beat)*.7) var(--ease-back),width calc(var(--beat)*.7) var(--ease-back),background-color var(--beat) ease}
+.kin-bar::after{content:"";position:absolute;right:-.28em;top:50%;width:.16em;height:.16em;margin-top:-.08em;background:var(--bc,var(--c1));border-radius:2px;transform:rotate(45deg)}
+.lead{font-size:18px;line-height:1.6;color:var(--fg-3);max-width:34em;letter-spacing:-.01em}
+.lead b{font-weight:590;color:var(--fg-2)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;color:var(--fg-3)}
+.facts span{display:inline-flex;align-items:center;gap:8px}
+.facts i{width:8px;height:8px;display:inline-block;background:var(--fc)}
+.facts i.s-c{border-radius:50%}.facts i.s-t{clip-path:polygon(50% 0,100% 100%,0 100%)}.facts i.s-d{transform:rotate(45deg)}
+
+/* ── 3D corner LED. Perspective matches the corner version's design viewpoint:
+      eye 35 m out on the diagonal at 1.6 m, faces 10 m wide from 5 m to 15 m above the street.
+      So perspective = 3.5 faces, and the eye sits 1.34 faces below the top edge.
+      The real corner is rounded, so the rig is a chain: left flat → 10 narrow strips around the curve → right flat (built in JS). */
+.led{--face:clamp(126px,19vw,244px);position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;margin:0;min-width:0}
+.led-stage{position:relative;width:calc(var(--face)*1.62);max-width:100%;height:calc(var(--face)*1.2);perspective:calc(var(--face)*3.5);perspective-origin:50% calc(var(--face)*1.44)}
+.led-rig{position:absolute;left:50%;top:50%;width:calc(var(--face)*2);height:var(--face);margin-left:calc(var(--face)*-1);margin-top:calc(var(--face)*-.5);transform-style:preserve-3d}
+.face{position:absolute;left:0;top:0;height:var(--face);overflow:hidden;transform-origin:0 50%;background:
+   radial-gradient(circle at 50% 50%,var(--led-dot) .9px,transparent 1.3px) 0 0/6px 6px,
+   linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.25)),var(--led-bg);
+  border-block:5px solid var(--led-edge)}
+.face.end-l{border-left:5px solid var(--led-edge)}.face.end-r{border-right:5px solid var(--led-edge)}
+.face::after{content:"";position:absolute;inset:0;z-index:2;background:var(--shc);pointer-events:none}
+.scr{position:absolute;inset:0;width:100%;height:100%;display:block}
+.face::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(circle,transparent 55%,rgba(0,0,0,.18) 100%) 0 0/4px 4px;pointer-events:none}
+.vswitch{display:flex;gap:4px;padding:4px;border-radius:10px;border:1px solid var(--line);background:var(--raise);max-width:100%}
+.vswitch button{appearance:none;border:0;background:none;color:var(--fg-3);font:inherit;font-size:13px;font-weight:510;height:32px;padding:0 12px;border-radius:7px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:background-color .15s ease,color .15s ease}
+.vswitch button i{width:8px;height:8px;border-radius:2px;background:var(--sv)}
+.vswitch button[aria-pressed="true"]{background:var(--raise-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+@media (hover:hover) and (pointer:fine){.vswitch button:hover{color:var(--fg)}}
+@media (max-width:420px){.vswitch button{padding:0 9px;font-size:12px}}
+.led-cap{font-size:12px;color:var(--fg-3);text-align:center;min-height:1.5em;max-width:34em}
+.led-run{width:min(100%,280px);height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.led-run i{display:block;height:100%;width:100%;background:var(--run,var(--c2));transform-origin:0 50%;transform:scaleX(0)}
+
+/* ── ticker ── */
+.ticker{border-bottom:1px solid var(--line-soft);overflow:hidden;padding-block:20px;
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:flowLR 90s linear infinite;transform:translateX(-50%)}
+@media (hover:hover) and (pointer:fine){.ticker:hover .track{animation-play-state:paused}}
+.track span.t{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font-size:clamp(22px,2.6vw,30px);font-weight:640;letter-spacing:-.025em;white-space:nowrap}
+.track .sep{width:12px;height:12px;display:inline-block;background:var(--sc)}
+.track .sep.c{border-radius:50%}.track .sep.t3{clip-path:polygon(50% 0,100% 100%,0 100%)}.track .sep.d{transform:rotate(45deg)}
+@keyframes flowLR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* ── sections ── */
+section.sec{padding-block:96px;border-bottom:1px solid var(--line-soft)}
+@media (max-width:760px){section.sec{padding-block:64px}}
+.sec-head{display:flex;flex-direction:column;gap:14px;max-width:720px;margin-bottom:48px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:10px;height:10px;background:var(--ec,var(--accent));clip-path:polygon(0 0,34% 0,34% 66%,100% 66%,100% 100%,0 100%)}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:600;letter-spacing:-.03em}
+h2 em{font-style:normal}
+.sec-lead{font-size:17px;line-height:1.6;color:var(--fg-3)}
+.card{background:var(--raise);border:1px solid var(--line);border-radius:12px}
+
+/* ── version blocks ── */
+.vers{display:flex;flex-direction:column;gap:20px}
+.ver{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;padding:20px;align-items:start;scroll-margin-top:80px}
+@media (max-width:900px){.ver{grid-template-columns:minmax(0,1fr);gap:20px}}
+.ver-media{position:relative;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ver-media video{width:100%;max-width:100%;display:block;aspect-ratio:2/1;object-fit:cover;border-radius:8px;border:1px solid var(--line-soft);background:#0b0f1a}
+.ver-media video.wide{aspect-ratio:16/9}
+.ver-letter{position:absolute;left:10px;top:10px;width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-family:var(--f-mono);font-weight:500;font-size:17px;color:#08090a;background:var(--tone);pointer-events:none}
+.mini{display:flex;gap:4px;align-self:flex-start;padding:3px;border-radius:8px;border:1px solid var(--line);background:var(--raise)}
+.mini button{appearance:none;border:0;background:none;color:var(--fg-3);font:inherit;font-size:12px;font-weight:510;height:28px;padding:0 10px;border-radius:6px;cursor:pointer}
+.mini button[aria-pressed="true"]{background:var(--raise-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)}
+.media-note{font-size:13px;color:var(--fg-4);line-height:1.5}
+.ver-body{display:flex;flex-direction:column;gap:16px;min-width:0}
+.ver-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:9999px;border:1px solid var(--line);font-size:12px;font-weight:510;color:var(--fg-2)}
+.chip.mood{border-color:color-mix(in srgb,var(--tone) 50%,transparent);color:var(--tone)}
+.chip.mood::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tone)}
+.ver h3{font-size:clamp(22px,2.4vw,28px);font-weight:620;letter-spacing:-.025em;line-height:1.2}
+.ver p{font-size:16px;line-height:1.65;color:var(--fg-3)}
+.ver-dl{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin:0}
+.ver-dl div{display:flex;flex-direction:column;gap:6px}
+.ver-dl dt{font-size:12px;font-family:var(--f-mono);letter-spacing:.08em;color:var(--fg-4)}
+.ver-dl dd{margin:0}
+.ver-dl ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.55;color:var(--fg-2)}
+.ver-dl li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px}
+.ver-dl li::before{content:"";width:6px;height:6px;margin-top:9px;background:var(--tone)}
+.ver-dl .warn li::before{background:none;border:1.5px solid var(--fg-4);width:7px;height:7px;margin-top:8px;border-radius:50%}
+
+/* compare */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th{font-size:12px;font-weight:510;color:var(--fg-4);letter-spacing:.02em}
+td{color:var(--fg-3);line-height:1.55}
+.cmp{min-width:680px;table-layout:fixed}
+.cmp th:first-child{width:150px}
+.cmp th[scope="row"]{font-size:13px;color:var(--fg-2);white-space:nowrap;font-weight:510}
+.cmp thead th{font-size:13px;color:var(--fg)}
+.cmp thead th i{display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--tone);margin-right:8px}
+.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:none}
+
+/* feedback */
+.fb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px;align-items:start}
+@media (max-width:900px){.fb{grid-template-columns:minmax(0,1fr)}}
+.fb-list{display:flex;flex-direction:column}
+.fb-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;padding:18px 20px;border-bottom:1px solid var(--line-soft)}
+.fb-item:last-child{border-bottom:none}
+.fb-item q{font-size:13px;color:var(--fg-4);quotes:"“" "”"}
+.fb-item h3{grid-column:1;font-size:17px;font-weight:590;letter-spacing:-.01em;line-height:1.4}
+.fb-item .st{grid-column:2;grid-row:1 / span 2;align-self:center;font-size:12px;font-weight:590;height:24px;padding:0 10px;border-radius:9999px;display:inline-flex;align-items:center;background:color-mix(in srgb,var(--stc) 16%,transparent);color:var(--stc)}
+.concept{padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.concept video{width:100%;max-width:100%;display:block;aspect-ratio:2/1;object-fit:cover;border-radius:8px;border:1px solid var(--line-soft);background:#0b0f1a}
+.concept h3{font-size:18px;font-weight:590;letter-spacing:-.015em}
+.concept p{font-size:15px;color:var(--fg-3);line-height:1.6}
+.beats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.beats{grid-template-columns:minmax(0,1fr)}}
+.beat{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);transition:border-color .2s ease,background-color .2s ease}
+.beat .k{font-family:var(--f-mono);font-size:11px;color:var(--fg-4)}
+.beat .v{font-size:14px;font-weight:590;color:var(--fg-2)}
+.beat .d{font-size:12px;color:var(--fg-3)}
+.beat.on{border-color:var(--bt);background:color-mix(in srgb,var(--bt) 10%,transparent)}
+.fb-media{display:flex;flex-direction:column;gap:16px;min-width:0}
+.concept .note{font-size:13px;color:var(--fg-4);line-height:1.5}
+
+/* surface: rounded corner */
+.surf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px}
+@media (max-width:900px){.surf{grid-template-columns:minmax(0,1fr)}}
+.surf figure{margin:0;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.surf figcaption{font-size:13px;color:var(--fg-4);line-height:1.5}
+.surf .scroll{overflow-x:auto}
+.surf svg{display:block;width:100%;height:auto}
+.surf .scroll svg{min-width:520px}
+.surf svg text{font-family:var(--f-sans);fill:var(--fg-3)}
+.surf svg .lb{fill:var(--fg-2);font-weight:590}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+@media (max-width:760px){.rules{grid-template-columns:minmax(0,1fr)}}
+.rule{padding:20px;display:flex;flex-direction:column;gap:8px}
+.rule .n{font-family:var(--f-mono);font-size:12px;color:var(--rc);display:inline-flex;align-items:center;gap:8px}
+.rule .n::before{content:"";width:8px;height:8px;background:var(--rc);border-radius:2px}
+.rule h3{font-size:18px;font-weight:590;letter-spacing:-.015em;line-height:1.35}
+.rule p{font-size:15px;color:var(--fg-3);line-height:1.6}
+
+/* 300s timeline */
+.tl{padding:24px;display:flex;flex-direction:column;gap:18px}
+.tl-track{position:relative;display:flex;gap:3px;height:56px}
+.seg{flex:var(--g) 1 0;min-width:0;border-radius:5px;background:var(--segc);opacity:.5;transition:opacity .25s ease,transform .25s var(--ease-back);display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:590;color:var(--bg);overflow:hidden;white-space:nowrap}
+.seg.logo{--segc:var(--fg-4)}
+.seg.on{opacity:1;transform:scaleY(1.12)}
+.head{position:absolute;inset:-8px 0;pointer-events:none}
+.head i{position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--fg);border-radius:2px;box-shadow:0 0 0 3px var(--bg)}
+.tl-scale{display:flex;justify-content:space-between;font-size:12px;color:var(--fg-4)}
+.tl-now{display:flex;align-items:baseline;gap:14px;min-height:44px;overflow:hidden;flex-wrap:wrap}
+.tl-now .time{font-family:var(--f-mono);font-size:13px;color:var(--fg-3);min-width:64px;font-variant-numeric:tabular-nums}
+.tl-now .txt{font-size:clamp(20px,2.6vw,28px);font-weight:640;letter-spacing:-.025em;display:inline-block}
+.tl-now .txt.fly{animation:flyIn calc(var(--beat)*1.2) var(--ease-out) both}
+@keyframes flyIn{0%{transform:translateX(-1.4em) skewX(-14deg);opacity:0}100%{transform:none;opacity:1}}
+.tl-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:640px){.tl-sum{grid-template-columns:minmax(0,1fr)}}
+.tl-sum div{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:8px;border:1px solid var(--line-soft)}
+.tl-sum .v{font-family:var(--f-mono);font-size:20px;font-weight:500;letter-spacing:-.02em;color:var(--fg)}
+.tl-sum .v s{color:var(--fg-4);font-size:14px;margin-right:6px}
+.tl-sum .k{font-size:13px;color:var(--fg-3)}
+.tl-note{font-size:13px;color:var(--fg-4)}
+
+/* estimate */
+.est{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:900px){.est{grid-template-columns:minmax(0,1fr)}}
+.est td:first-child{font-weight:510;color:var(--fg);white-space:nowrap}
+td.num,th.num{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;color:var(--fg-2);white-space:nowrap}
+tr.sum td{color:var(--fg);font-weight:590;border-bottom:none}
+.total{padding:24px;display:flex;flex-direction:column;gap:12px}
+.total .label{font-size:13px;color:var(--fg-3)}
+.total .big{font-family:var(--f-mono);font-size:clamp(34px,4.4vw,48px);font-weight:500;letter-spacing:-.04em;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap}
+.total ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--fg-3)}
+.total li{display:flex;gap:10px}
+.total li::before{content:"";width:6px;height:6px;margin-top:8px;flex:none;background:var(--lc,var(--fg-4))}
+
+/* schedule + next steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.steps{grid-template-columns:minmax(0,1fr)}}
+.step{padding:20px;display:flex;flex-direction:column;gap:12px}
+.step .wk{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:13px;color:var(--sc2)}
+.step .wk i{width:12px;height:12px;background:var(--sc2);border-radius:50%;animation:ping2 calc(var(--beat)*4) var(--ease-out) infinite;animation-delay:calc(var(--k) * var(--beat))}
+@keyframes ping2{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--sc2) 55%,transparent)}40%,100%{box-shadow:0 0 0 8px transparent}}
+.step h3{font-size:18px;font-weight:590;letter-spacing:-.015em}
+.step ul{margin:0;padding-left:18px;color:var(--fg-3);font-size:15px;line-height:1.7}
+.progress{height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:24px}
+.progress i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4));transform-origin:0 50%;animation:grow calc(var(--beat)*12) var(--ease-io) infinite}
+@keyframes grow{0%{transform:scaleX(0)}70%,100%{transform:scaleX(1)}}
+.todo{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;counter-reset:td}
+@media (max-width:760px){.todo{grid-template-columns:minmax(0,1fr)}}
+.todo li{counter-increment:td;display:grid;grid-template-columns:32px minmax(0,1fr);gap:4px 12px;padding:18px}
+.todo li::before{content:counter(td);grid-row:1 / span 2;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:13px;color:var(--fg-2)}
+.todo b{font-size:16px;font-weight:590;letter-spacing:-.01em}
+.todo span{font-size:14px;color:var(--fg-3);line-height:1.6}
+
+/* contact */
+.closing{padding-block:104px}
+.closing h2{font-size:clamp(36px,5.6vw,72px);letter-spacing:-.04em;line-height:1.05;margin-bottom:28px}
+.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:36px}
+@media (max-width:900px){.contact{grid-template-columns:minmax(0,1fr)}}
+.cbox{padding:18px;display:flex;align-items:center;gap:12px;min-width:0}
+.cbox .t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cbox .k{font-size:12px;color:var(--fg-4)}
+.cbox .v{font-size:15px;font-weight:510;color:var(--fg);user-select:all;overflow-wrap:anywhere}
+.cbox button{margin-left:auto;height:30px;padding:0 10px;border-radius:6px;border:1px solid var(--line);background:var(--raise);color:var(--fg-2);font:inherit;font-size:12px;cursor:pointer;transition:background-color .15s ease}
+@media (hover:hover) and (pointer:fine){.cbox button:hover{background:var(--raise-2)}}
+footer{padding-block:28px;font-size:12px;color:var(--fg-4)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;animation-delay:0ms!important;transition-duration:1ms!important}
+  .track{transform:translateX(-25%)}
+}
+</style>
+
+<nav class="nav" aria-label="주요 메뉴">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="맨 위로">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="0" y="0" width="7" height="22" rx="2" style="fill:var(--c1)"/><rect x="0" y="15" width="22" height="7" rx="2" style="fill:var(--c4)"/><circle cx="16" cy="6" r="4" style="fill:var(--c2)"/></svg>
+      <span>프리젠</span><span class="mono" style="color:var(--fg-4);font-size:12px;font-weight:400">× 나은필병원</span>
+    </a>
+    <div class="nav-links">
+      <a href="#versions">세 가지 시안</a><a href="#compare">비교</a><a href="#surface">화면 구성</a><a href="#feedback">피드백 반영</a><a href="#timeline">5분 구성</a><a href="#cost">견적</a><a href="#next">다음 단계</a>
+    </div>
+    <a class="btn btn-brand" href="#versions">시안 보기</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="pill"><span class="dot"></span>나은필병원 · ㄴ자 옥외 LED 2차 제안</span>
+      <h1 class="kin" id="kin">
+        <span class="w" style="--wc:var(--c1)">같은</span> <span class="w" style="--wc:var(--c2)">슬로건,</span><br>
+        <span class="w" style="--wc:var(--c3)">세&nbsp;가지</span> <span class="w" style="--wc:var(--c4)">연출</span>
+        <span class="kin-bar" id="kinBar" aria-hidden="true"></span>
+      </h1>
+      <p class="lead">병원 슬로건 20개를 <b>활기·화제·신뢰</b> 세 방향으로 준비했습니다. 마음에 드는 방향을 골라 주시면, 그 방향으로 슬로건별 심벌 애니메이션과 로고 모션을 넣어 5분 영상을 완성합니다.</p>
+      <div class="cta"><a class="btn btn-brand" href="#versions">세 가지 시안 보기</a><a class="btn btn-ghost" href="#feedback">피드백 반영 내용</a></div>
+      <div class="facts mono">
+        <span><i class="s-c" style="--fc:var(--c1)"></i>300초 반복</span>
+        <span><i style="--fc:var(--c2)"></i>로고 20초 × 5</span>
+        <span><i class="s-t" style="--fc:var(--c3)"></i>슬로건 10초 × 20</span>
+        <span><i class="s-d" style="--fc:var(--c4)"></i>2,500 × 1,250px</span>
+      </div>
+    </div>
+    <figure class="led" aria-label="둥근 모서리 LED 미리보기: 세 가지 시안의 송출 화면을 왼쪽 평면, 둥근 가운데, 오른쪽 평면에 이어서 재생합니다">
+      <div class="vswitch" role="group" aria-label="미리볼 시안">
+        <button type="button" id="swA" data-v="a" aria-pressed="true" style="--sv:var(--va)"><i></i>A 키네틱</button>
+        <button type="button" id="swB" data-v="b" aria-pressed="false" style="--sv:var(--vb)"><i></i>B 코너 입체</button>
+        <button type="button" id="swC" data-v="c" aria-pressed="false" style="--sv:var(--vc)"><i></i>C 엑스레이</button>
+      </div>
+      <div class="led-stage">
+        <div class="led-rig" id="ledRig"></div>
+      </div>
+      <div class="led-run" aria-hidden="true"><i id="ledRun"></i></div>
+      <figcaption class="led-cap" id="ledCap">A 키네틱 · 송출 화면 30초</figcaption>
+    </figure>
+  </div>
+</header>
+
+<div class="ticker" aria-label="슬로건 20개">
+  <div class="track" id="track"></div>
+</div>
+
+<main>
+  <section class="sec" id="versions">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c2)">Versions</span>
+        <h2>병원에 맞는 <em class="c2">한 가지</em>를 골라 주세요</h2>
+        <p class="sec-lead">세 시안 모두 같은 슬로건과 같은 화면 규격으로 만들었습니다. 다른 것은 화면이 주는 인상입니다. 영상에 비치는 '시안용' 글자는 검토용 표시이고, 납품 영상에는 들어가지 않습니다.</p>
+      </div>
+      <div class="vers">
+        <article class="card ver" id="ver-a" style="--tone:var(--va)">
+          <div class="ver-media">
+            <video src="media/a.mp4" poster="media/a.jpg" muted loop playsinline autoplay preload="metadata" aria-label="A안 키네틱: 바른 움직임, 나은 미래가 박자에 맞춰 둥근 가운데를 사이에 두고 양쪽 평면에 꽂히고, 관절 배지를 단 러너가 질주 자세로 달립니다"></video>
+            <span class="ver-letter" aria-hidden="true">A</span>
+          </div>
+          <div class="ver-body">
+            <div class="ver-top"><span class="chip mood">활기</span><span class="chip">5분 전체 시안 있음</span></div>
+            <h3>키네틱 타이포 + 러너 심벌</h3>
+            <p>단어가 박자(120 BPM)에 맞춰 두 면을 오가며 꽂히고, 관절 배지를 단 러너가 병원 간판처럼 몸을 앞으로 기울인 질주 자세로 화면을 가로지릅니다. 글자는 둥근 가운데를 비켜 양쪽 평면에 놓고, 긴 줄은 띄어쓰기에서 나눠 둥근 부분을 사이에 둡니다. 밝은 아이보리·초록·하늘색 바탕이 바뀌면서 멀리서도 눈에 잘 띕니다.</p>
+            <dl class="ver-dl">
+              <div><dt>좋은 점</dt><dd><ul><li>글자가 크고 빨리 읽혀서 차 안에서도 슬로건이 남습니다.</li><li>이미 5분 전체를 만들어 두어 가장 빨리 완성할 수 있습니다.</li></ul></dd></div>
+              <div class="warn"><dt>고려할 점</dt><dd><ul><li>화면 전환이 잦습니다. 차분한 인상을 원하시면 C안이 맞습니다.</li></ul></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card ver" id="ver-b" style="--tone:var(--vb)">
+          <div class="ver-media">
+            <video class="wide" id="vidB" src="media/b_sim.mp4" poster="media/b_sim.jpg" muted loop playsinline autoplay preload="metadata" aria-label="B안 코너 입체: 건물 모서리가 유리 상자처럼 열리고 러너와 병원 로고가 길 쪽으로 튀어나오는 장면을 거리에서 본 모습"></video>
+            <span class="ver-letter" aria-hidden="true">B</span>
+            <div class="mini" role="group" aria-label="B안 보기 방식">
+              <button type="button" id="bStreet" aria-pressed="true">거리에서 본 모습</button>
+              <button type="button" id="bFlat" aria-pressed="false">송출 원본</button>
+            </div>
+            <p class="media-note" id="bNote">대각선 맞은편 보도에서 본 모습을 시뮬레이션했습니다.</p>
+          </div>
+          <div class="ver-body">
+            <div class="ver-top"><span class="chip mood">화제</span><span class="chip">30초 샘플</span></div>
+            <h3>코너 입체 (아나모픽)</h3>
+            <p>건물 모서리 두 면이 하나의 유리 상자처럼 열리고, 그 안에서 3D 글자와 러너, 마지막에는 두께 있는 병원 로고(두 손 심벌과 이름)가 길 쪽으로 튀어나옵니다. 1차 제안서에서 말씀드린 '모서리 입체 착시'를 실제로 구현한 시안입니다. 둥근 모서리(반지름 1.6m 가정)에 맞춰 입체 착시를 다시 계산했고, 상자 테두리와 안쪽 방 벽도 기둥 없이 둥글게 이어집니다.</p>
+            <dl class="ver-dl">
+              <div><dt>좋은 점</dt><dd><ul><li>지나가는 사람이 사진을 찍어 SNS에 올릴 만한 장면을 만듭니다.</li><li>입체는 로고 화면(20초 × 5)에 쓰고, 슬로건은 평면으로 두어 읽기 쉽게 구성합니다.</li></ul></dd></div>
+              <div class="warn"><dt>고려할 점</dt><dd><ul><li>입체감은 한 지점(예: 대각선 횡단보도)에서 가장 정확하고, 다른 위치에서는 약해집니다.</li><li>둥근 모서리 반지름을 1.6m로 가정해 계산했습니다. 실제 반지름을 받으면 그 값으로 다시 계산합니다.</li></ul></dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card ver" id="ver-c" style="--tone:var(--vc)">
+          <div class="ver-media">
+            <video src="media/c.mp4" poster="media/c.jpg" muted loop playsinline autoplay preload="metadata" aria-label="C안 엑스레이: 남색 바탕에 빛나는 스캔 막대가 지나가며 손뼈와 러너의 관절, 슬로건, 병원 로고가 켜집니다"></video>
+            <span class="ver-letter" aria-hidden="true">C</span>
+          </div>
+          <div class="ver-body">
+            <div class="ver-top"><span class="chip mood">신뢰</span><span class="chip">30초 샘플</span></div>
+            <h3>엑스레이 라이트박스</h3>
+            <p>남색 바탕에 빛나는 스캔 막대가 왼쪽 평면에서 둥근 가운데를 지나 오른쪽으로 건너갑니다. 글자와 배지는 둥근 부분을 비켜 양쪽 평면에 둡니다. 막대가 지나간 자리에서 러너 실루엣 속 뼈와 관절, 슬로건 글자가 차례로 켜지고, 마지막에는 병원 로고의 윤곽이 먼저 빛난 뒤 색이 차오릅니다.</p>
+            <dl class="ver-dl">
+              <div><dt>좋은 점</dt><dd><ul><li>정형외과다운 차분하고 전문적인 인상을 줍니다.</li><li>바탕이 어두워 밤에 눈부심이 적고 저녁 시간과 잘 어울립니다.</li></ul></dd></div>
+              <div class="warn"><dt>고려할 점</dt><dd><ul><li>한낮에는 밝은 A안보다 눈에 덜 띌 수 있습니다.</li></ul></dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="compare">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c3)">Compare</span>
+        <h2>한눈에 <em class="c3">비교</em>하기</h2>
+      </div>
+      <div class="card tbl-wrap">
+        <table class="cmp">
+          <thead><tr><th scope="col"><span class="sr">구분</span></th><th scope="col" style="--tone:var(--va)"><i></i>A 키네틱</th><th scope="col" style="--tone:var(--vb)"><i></i>B 코너 입체</th><th scope="col" style="--tone:var(--vc)"><i></i>C 엑스레이</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">인상</th><td>활기 · 밝고 빠름</td><td>화제 · 건물이 열리는 입체</td><td>신뢰 · 차분하고 전문적</td></tr>
+            <tr><th scope="row">화면 밝기</th><td>밝은 바탕</td><td>밝은 상자 안, 남색 테두리</td><td>어두운 바탕</td></tr>
+            <tr><th scope="row">슬로건 읽기</th><td>가장 빠름</td><td>슬로건은 평면으로 읽기 쉽게</td><td>스캔이 지나간 뒤 읽힘</td></tr>
+            <tr><th scope="row">잘 보이는 위치</th><td>교차로 어디서나</td><td>대각선 정면에서 가장 입체적</td><td>교차로 어디서나</td></tr>
+            <tr><th scope="row">필요한 현장 정보</th><td>모서리 반지름</td><td>모서리 반지름, LED 아래끝 높이, 주로 보는 위치</td><td>모서리 반지름</td></tr>
+            <tr><th scope="row">지금 있는 시안</th><td>5분 전체</td><td>30초 샘플</td><td>30초 샘플</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec" id="surface">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c4)">Surface</span>
+        <h2>가운데가 <em class="c4">둥글게</em> 이어지는 한 장의 화면</h2>
+        <p class="sec-lead">모서리가 직각으로 갈라지지 않고 둥글게 돌아갑니다. 그래서 2,500 × 1,250 화면을 두 면으로 나누지 않고, 왼쪽 평면 – 둥근 가운데 – 오른쪽 평면이 끊김 없이 이어진 한 장으로 보고 구성합니다. 세 시안과 로고 모션 모두 이 기준으로 다시 배치했습니다.</p>
+      </div>
+      <div class="surf">
+        <figure class="card">
+          <svg viewBox="0 0 300 228" role="img" aria-labelledby="planT">
+            <title id="planT">위에서 본 모서리: 왼쪽 평면과 오른쪽 평면 사이가 둥글게 이어지고, 왼쪽 길·오른쪽 길·대각선 정면에서 봅니다</title>
+            <path d="M29.8 46.4 L121.7 138.3 A40 40 0 0 0 178.3 138.3 L270.2 46.4 L270.2 14 L29.8 14 Z" style="fill:var(--raise-2)"/>
+            <text x="150" y="40" text-anchor="middle" font-size="12">건물</text>
+            <path d="M33 140 L72 101" style="stroke:var(--fg-4)" stroke-dasharray="3 4" stroke-width="1.2"/>
+            <path d="M267 140 L228 101" style="stroke:var(--fg-4)" stroke-dasharray="3 4" stroke-width="1.2"/>
+            <path d="M150 192 L150 156" style="stroke:var(--fg-4)" stroke-dasharray="3 4" stroke-width="1.2"/>
+            <path d="M29.8 46.4 L121.7 138.3" style="stroke:var(--c2)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M178.3 138.3 L270.2 46.4" style="stroke:var(--c1)" stroke-width="7" stroke-linecap="round" fill="none"/>
+            <path d="M121.7 138.3 A40 40 0 0 0 178.3 138.3" style="stroke:var(--c4)" stroke-width="7" fill="none"/>
+            <circle cx="30" cy="143" r="5" style="fill:var(--fg-3)"/><circle cx="270" cy="143" r="5" style="fill:var(--fg-3)"/><circle cx="150" cy="197" r="5" style="fill:var(--fg-3)"/>
+            <text x="30" y="163" text-anchor="middle" font-size="12">왼쪽 길</text>
+            <text x="270" y="163" text-anchor="middle" font-size="12">오른쪽 길</text>
+            <text x="150" y="220" text-anchor="middle" font-size="12">대각선 정면</text>
+            <text class="lb" x="58" y="62" font-size="12" transform="rotate(45 58 62)" text-anchor="middle" dy="-13">왼쪽 평면</text>
+            <text class="lb" x="242" y="62" font-size="12" transform="rotate(-45 242 62)" text-anchor="middle" dy="-13">오른쪽 평면</text>
+            <text class="lb" x="150" y="178" font-size="12" text-anchor="middle" style="fill:var(--c4)">둥근 가운데</text>
+          </svg>
+          <figcaption>위에서 본 모서리. 대각선 정면에서 보면 둥근 가운데가 가장 정면이 됩니다.</figcaption>
+        </figure>
+        <figure class="card">
+          <div class="scroll">
+            <svg viewBox="0 0 640 372" role="img" aria-labelledby="stripT">
+              <title id="stripT">펼친 송출 화면: 0에서 약 1,090px은 왼쪽 평면, 약 1,090에서 1,410px은 둥근 가운데, 그 뒤 2,500px까지 오른쪽 평면. 심벌은 왼쪽 평면, 글자는 오른쪽 평면에 두고 움직임은 가운데를 지나 이어집니다</title>
+              <defs><linearGradient id="curveG" x1="0" x2="1" y1="0" y2="0"><stop offset="0" style="stop-color:var(--c4)" stop-opacity="0"/><stop offset=".5" style="stop-color:var(--c4)" stop-opacity=".22"/><stop offset="1" style="stop-color:var(--c4)" stop-opacity="0"/></linearGradient>
+                <marker id="arrH" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" style="fill:var(--c4)"/></marker></defs>
+              <text class="lb" x="150.8" y="22" text-anchor="middle" font-size="14" style="fill:var(--c2)">왼쪽 평면</text>
+              <text class="lb" x="320" y="22" text-anchor="middle" font-size="14" style="fill:var(--c4)">둥근 가운데</text>
+              <text class="lb" x="489.2" y="22" text-anchor="middle" font-size="14" style="fill:var(--c1)">오른쪽 평면</text>
+              <rect x="20" y="36" width="600" height="300" rx="4" style="fill:var(--raise-2);stroke:var(--line)"/>
+              <rect x="281.6" y="36" width="76.8" height="300" fill="url(#curveG)"/>
+              <path d="M281.6 36 V336 M358.4 36 V336" style="stroke:var(--c4)" stroke-dasharray="4 5" stroke-width="1.4"/>
+              <g transform="translate(150 166)">
+                <path d="M-46 4 C-40 -40 0 -58 40 -28" style="stroke:var(--c2)" stroke-width="16" stroke-linecap="round" fill="none"/>
+                <path d="M46 -4 C40 40 0 58 -40 28" style="stroke:var(--c3)" stroke-width="16" stroke-linecap="round" fill="none"/>
+                <circle r="11" style="fill:var(--c3)"/>
+              </g>
+              <text x="150.8" y="252" text-anchor="middle" font-size="13">심벌 · 사람 그림</text>
+              <rect x="392" y="140" width="180" height="22" rx="4" style="fill:var(--fg-2)"/>
+              <rect x="392" y="172" width="130" height="22" rx="4" style="fill:var(--fg-2)"/>
+              <text x="482" y="226" text-anchor="middle" font-size="13">슬로건 · 병원 이름</text>
+              <path d="M214 214 C262 186 378 186 426 214" style="stroke:var(--c4)" stroke-width="2.2" fill="none" stroke-dasharray="7 6" marker-end="url(#arrH)"/>
+              <text x="320" y="282" text-anchor="middle" font-size="13" style="fill:var(--c4)">움직임은 가운데를 지나 이어짐</text>
+              <g id="stripBars" style="fill:var(--fg-4)"></g>
+              <text x="20" y="358" font-size="12" class="mono">0</text>
+              <text x="281.6" y="358" font-size="12" text-anchor="middle">≈ 1,090</text>
+              <text x="358.4" y="358" font-size="12" text-anchor="middle">≈ 1,410</text>
+              <text x="620" y="358" font-size="12" text-anchor="end">2,500px</text>
+            </svg>
+          </div>
+          <figcaption>펼친 송출 화면. 둥근 부분은 반지름 약 1.6m(320px)로 가정했습니다. 바닥 막대처럼 가운데에서 끊기는 선 없이 한 장으로 잇습니다.</figcaption>
+        </figure>
+      </div>
+      <div class="rules">
+        <div class="card rule" style="--rc:var(--c2)"><span class="n">01</span><h3>읽는 글자는 평면에</h3><p>슬로건과 병원 이름은 양쪽 평면에 둡니다. 왼쪽 길·오른쪽 길 어디서든 정면으로 또박또박 읽힙니다.</p></div>
+        <div class="card rule" style="--rc:var(--c4)"><span class="n">02</span><h3>둥근 가운데는 움직임이 지나가는 자리</h3><p>달리는 사람 심벌, 리본, 빛줄기가 둥근 가운데를 돌아 반대편으로 이어집니다. 대각선에서 보면 가장 정면이 되는 자리라 움직임이 가장 잘 보입니다.</p></div>
+        <div class="card rule" style="--rc:var(--c3)"><span class="n">03</span><h3>가운데에 경계선을 두지 않음</h3><p>배경색·격자·바닥 막대를 한 장으로 잇고, 장면 전환도 가운데를 지나 좌우로 흐르게 합니다. 세 시안 모두 바닥 막대를 한 줄로 잇고, B안 유리 상자는 가운데 기둥 없이 둥근 테두리로 바꿨습니다.</p></div>
+        <div class="card rule" style="--rc:var(--c1)"><span class="n">04</span><h3>반지름은 현장에서 확정</h3><p>반지름이 1~2m면 화면에서 약 200~400px입니다. 둥근 부분이 2,500px 안에 포함되는지와 함께 확인해 정확히 맞춥니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="feedback">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c4)">Feedback</span>
+        <h2>대표원장님 의견을 <em class="c4">이렇게</em> 반영했습니다</h2>
+        <p class="sec-lead">어느 시안을 고르셔도 아래 내용은 똑같이 들어갑니다.</p>
+      </div>
+      <div class="fb">
+        <div class="card fb-list">
+          <div class="fb-item" style="--stc:var(--c2)"><q>사이사이 들어가는 로고는 모두 15~20초</q><h3>로고 화면을 회당 20초로, 5분에 5번 넣습니다</h3><span class="st">반영</span></div>
+          <div class="fb-item" style="--stc:var(--c2)"><q>슬로건 시간은 조금 줄여도</q><h3>슬로건 하나를 12초에서 10초로 줄였습니다</h3><span class="st">반영</span></div>
+          <div class="fb-item" style="--stc:var(--c1)"><q>슬로건 별로 일러스트 애니메이션</q><h3>슬로건마다 사람·관절 심벌이 움직이는 장면을 넣습니다</h3><span class="st">시안</span></div>
+          <div class="fb-item" style="--stc:var(--c1)"><q>로고도 모션그래픽</q><h3>두 손이 사람을 감싸 안는 20초 로고 모션을 만들었습니다</h3><span class="st">시안</span></div>
+        </div>
+        <div class="fb-media">
+          <figure class="card concept" style="margin:0">
+            <video id="vidF" src="media/f.mp4" poster="media/f.jpg" muted loop playsinline autoplay preload="metadata" aria-label="로고 모션 20초: 떨어지는 점을 초록·파랑 두 리본이 감싸 안고, 오른쪽에 나은필병원 음절이 하나씩 떨어져 자리 잡습니다"></video>
+            <h3>로고 모션 · 20초</h3>
+            <p>떨어지는 사람(점)을 초록·파랑 두 손이 받아 감싸 안습니다. 병원 이름은 심벌과 따로, 음절이 박자마다 하나씩 떨어져 바닥에 '툭' 눌렸다 튀며 자리 잡습니다.</p>
+            <div class="beats" data-video="vidF">
+              <div class="beat" data-a="0" style="--bt:#2ED47A"><span class="k mono">0–3초</span><span class="v">감싸 안기 · 이름</span><span class="d">음절이 하나씩 떨어져 자리 잡음</span></div>
+              <div class="beat" data-a="3" style="--bt:#5B8CFF"><span class="k mono">3–17초</span><span class="v">로고</span><span class="d">다시 안아 주고, 이름은 물결처럼 들썩임</span></div>
+              <div class="beat" data-a="17" style="--bt:#FF7A3D"><span class="k mono">17–20초</span><span class="v">다음 슬로건으로</span><span class="d">이름이 뛰어오르고 손이 풀림</span></div>
+            </div>
+            <p class="note">받은 로고 이미지를 다시 그린 시안입니다. AI 원본을 받으면 로고 모양만 원본으로 바꿔 넣습니다.</p>
+          </figure>
+          <figure class="card concept" style="margin:0">
+            <video id="vidE" src="media/e.mp4" poster="media/e.jpg" muted loop playsinline autoplay preload="metadata" aria-label="슬로건 심벌 애니메이션 30초: 다시 걷는 행복, 척추부터 바르게, 아픈 손의 희망 세 슬로건이 사람·관절 심벌과 함께 나옵니다"></video>
+            <h3>슬로건별 심벌 애니메이션 · 30초</h3>
+            <p>시안을 다듬으며 만들어 온 사람·관절 심벌이 슬로건 뜻에 맞춰 움직입니다. 20개 슬로건 모두 이렇게 각자의 심벌 장면을 갖습니다.</p>
+            <div class="beats" data-video="vidE">
+              <div class="beat" data-a="0" style="--bt:#2ED47A"><span class="k mono">0–10초</span><span class="v">다시 걷는 행복</span><span class="d">발자국을 따라 달리는 사람</span></div>
+              <div class="beat" data-a="10" style="--bt:#5B8CFF"><span class="k mono">10–20초</span><span class="v">척추부터 바르게</span><span class="d">척추 뼈대와 뼈 심벌</span></div>
+              <div class="beat" data-a="20" style="--bt:#FF7A3D"><span class="k mono">20–30초</span><span class="v">아픈 손의 희망</span><span class="d">러너의 손 관절 배지</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="timeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c1)">Timeline</span>
+        <h2><em class="c1">1분</em>마다 로고, 그 사이에 슬로건 4개</h2>
+        <p class="sec-lead">로고 20초와 슬로건 4개(10초씩)를 한 묶음으로, 5분 동안 다섯 번 반복합니다. 아래 막대는 실제보다 10배 빠르게 재생됩니다.</p>
+      </div>
+      <div class="card tl">
+        <div class="tl-track" id="tlTrack"><div class="head" id="tlHead"><i></i></div></div>
+        <div class="tl-scale mono"><span>0:00</span><span>1:00</span><span>2:00</span><span>3:00</span><span>4:00</span><span>5:00</span></div>
+        <div class="tl-now"><span class="time" id="tlTime">0:00</span><span class="txt" id="tlTxt">로고 · 나은필병원</span></div>
+        <div class="tl-sum">
+          <div><span class="v"><s>60초</s>100초</span><span class="k">로고 화면 · 20초 × 5회</span></div>
+          <div><span class="v"><s>240초</s>200초</span><span class="k">슬로건 · 10초 × 20개</span></div>
+          <div><span class="v">300초</span><span class="k">전체 · 끊김 없이 반복</span></div>
+        </div>
+        <p class="tl-note">효과를 암시하는 일부 문구는 의료광고 심의 결과에 따라 바뀔 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="cost">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--accent)">Estimate</span>
+        <h2>제작 비용 <em class="c4">550만 원</em> (부가세 포함)</h2>
+        <p class="sec-lead">어느 시안으로 정하셔도 제작 범위와 금액은 같습니다. 매체 송출료와 의료광고 심의 비용은 포함되지 않습니다.</p>
+      </div>
+      <div class="est">
+        <div class="card tbl-wrap">
+          <table>
+            <thead><tr><th>항목</th><th>내용</th><th class="num">금액(원)</th></tr></thead>
+            <tbody>
+              <tr><td>기획·구성</td><td>세 가지 시안과 300초 영상 구성안</td><td class="num">500,000</td></tr>
+              <tr><td>디자인</td><td>슬로건 20개 타이포그래피와 사람·관절 심벌 디자인, 색 설계</td><td class="num">1,000,000</td></tr>
+              <tr><td>모션그래픽</td><td>슬로건별 문구 모션과 심벌 애니메이션</td><td class="num">2,000,000</td></tr>
+              <tr><td>ㄴ자 화면 맞춤</td><td>둥근 모서리에 맞춘 화면 구성(B안은 코너 입체 착시)</td><td class="num">700,000</td></tr>
+              <tr><td>로고 모션</td><td>병원 로고 모션그래픽(회당 20초, 5회)</td><td class="num">300,000</td></tr>
+              <tr><td>테스트·수정</td><td>현장 송출 테스트와 수정 2회</td><td class="num">300,000</td></tr>
+              <tr><td>렌더링·납품</td><td>최종 렌더링과 송출 규격 납품</td><td class="num">200,000</td></tr>
+              <tr class="sum"><td>공급가 합계</td><td></td><td class="num">5,000,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card total">
+          <span class="label">총 제작 비용 (부가세 포함)</span>
+          <div class="big"><span class="c1">5</span><span class="c2">,</span><span class="c3">5</span><span class="c4">0</span><span class="c1">0</span><span class="c2">,</span><span class="c3">0</span><span class="c4">0</span><span class="c1">0</span><span style="color:var(--fg-3);font-size:.5em;align-self:flex-end;margin:0 0 .35em .3em">원</span></div>
+          <ul>
+            <li style="--lc:var(--c1)">공급가 5,000,000원 + 부가세 500,000원</li>
+            <li style="--lc:var(--c2)">계약금 50%는 계약 후 7일 이내, 잔금 50%는 최종 납품 후 14일 이내</li>
+            <li style="--lc:var(--c3)">납품 후 수정 2회 포함, 심의로 인한 문구 수정은 횟수에서 빼고 진행</li>
+            <li style="--lc:var(--c4)">계약일로부터 21일 이내 납품</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="next">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow" style="--ec:var(--c2)">Schedule</span>
+        <h2>시안을 고르시면 <em class="c2">3주</em> 안에 납품합니다</h2>
+      </div>
+      <div class="progress" aria-hidden="true"><i></i></div>
+      <div class="steps">
+        <div class="card step" style="--sc2:var(--c1);--k:0"><span class="wk"><i></i>1주차</span><h3>컨셉</h3><ul><li>시안 선택, 로고 원본 수령</li><li>고르신 시안으로 슬로건 2~3개 컨셉 시안(심벌 애니메이션 포함) 제출</li></ul></div>
+        <div class="card step" style="--sc2:var(--c2);--k:1"><span class="wk"><i></i>2주차</span><h3>제작</h3><ul><li>컨셉 확정</li><li>슬로건 20개와 로고 모션 전체 제작</li></ul></div>
+        <div class="card step" style="--sc2:var(--c4);--k:2"><span class="wk"><i></i>3주차</span><h3>송출</h3><ul><li>1차 영상 검수와 수정</li><li>현장 송출 테스트, 최종 납품</li></ul></div>
+      </div>
+      <ol class="todo">
+        <li class="card"><b>시안 고르기</b><span>A·B·C 중 하나를 골라 주세요. 두 시안을 섞는 구성도 상의할 수 있습니다.</span></li>
+        <li class="card"><b>로고 AI 파일 보내기</b><span>로고 모션은 받은 이미지로 먼저 만들었습니다. 아래 이메일로 원본을 보내 주시면 로고 모양을 원본 그대로 바꿔 넣습니다.</span></li>
+        <li class="card"><b>계약서 확인과 서명</b><span>메일로 보내드린 계약서를 확인하신 뒤 서명해 주세요.</span></li>
+        <li class="card"><b>모서리 치수 알려 주기</b><span>둥근 모서리의 반지름과, 둥근 부분이 2,500px 화면 안에 들어가는지 알려 주세요. B안이면 LED 아래끝 높이와 사람들이 가장 많이 보는 위치도 필요합니다.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="closing" id="contact">
+    <div class="wrap">
+      <span class="eyebrow" style="--ec:var(--c2)">Contact</span>
+      <h2 style="margin-top:16px"><span class="c1">글자가</span> <span class="c2">움직이면,</span><br><span class="c3">사람이</span> <span class="c4">멈춥니다.</span></h2>
+      <p class="sec-lead">나은필병원의 슬로건이 교차로의 풍경이 되도록, 기획부터 현장 송출 테스트까지 함께하겠습니다.</p>
+      <div class="contact">
+        <div class="card cbox"><div class="t"><span class="k">담당</span><span class="v">프리젠 라스랍 팀장</span></div></div>
+        <div class="card cbox"><div class="t"><span class="k">전화</span><span class="v" id="vTel">010-4276-0153</span></div><button type="button" id="cpTel" data-src="vTel">복사</button></div>
+        <div class="card cbox"><div class="t"><span class="k">이메일</span><span class="v" id="vMail">rahangel77@gmail.com</span></div><button type="button" id="cpMail" data-src="vMail">복사</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>프리젠(Pregen) · pregen.kr · 충남 천안시 서북구 쌍용동 1658번지 1층</span><span class="mono">2026.10 · 나은필병원 ㄴ자 LED 2차 제안</span></div>
+</footer>
+
+<script>
+(() => {
+  const BEAT = 500;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)'];
+
+  // the 20 slogans, in broadcast order
+  const S = ['바른 움직임, 나은 미래', '건강한 관절, 가벼운 일상', '나은 움직임, 나은 일상', '섬세한 손, 다시 걷는 삶', '큰 행복은 작은 손에서부터',
+    'Feel Good, Feel Better!', '다시 걷는 행복', '통증 없는 내일', '바른 척추 바른 생활', '건강한 관절 습관',
+    '움직임이 건강이다', '관절건강 함께해요', '손발건강 평생행복', '척추부터 바르게', '무릎 아끼기 실천',
+    '바른자세 평생건강', '척추 관절 튼튼하게', '움직이면 건강해요', '관절건강 첫 걸음', '아픈 손의 희망'];
+
+  // ── hero headline: characters fly in, then an emphasis bar hops word to word
+  const kin = document.getElementById('kin');
+  const words = [...kin.querySelectorAll('.w')];
+  words.forEach((w, wi) => {
+    const txt = w.textContent; w.textContent = '';
+    [...txt].forEach((c, ci) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c; s.style.setProperty('--d', wi * 220 + ci * 45); w.appendChild(s); });
+  });
+  const bar = document.getElementById('kinBar');
+  function placeBar(i) {
+    const w = words[i], kb = kin.getBoundingClientRect(), r = w.getBoundingClientRect();
+    bar.style.width = r.width + 'px';
+    bar.style.transform = `translate(${r.left - kb.left}px, ${r.bottom - kb.bottom}px)`;
+    bar.style.setProperty('--bc', getComputedStyle(w).getPropertyValue('--wc'));
+    words.forEach((x, j) => x.classList.toggle('on', j === i));
+  }
+  let wordIdx = 0; placeBar(0);
+  addEventListener('resize', () => placeBar(wordIdx));
+  document.fonts && document.fonts.ready.then(() => placeBar(wordIdx));
+
+  // ── ticker
+  const track = document.getElementById('track');
+  const SEP = ['c', '', 't3', 'd'];
+  function tickerRun() {
+    const f = document.createDocumentFragment(); let n = 0;
+    S.forEach((s, i) => {
+      const span = document.createElement('span'); span.className = 't';
+      const line = document.createElement('span'); line.style.whiteSpace = 'pre';
+      const ws = s.split(/\s+/);
+      ws.forEach((w, j) => { const e = document.createElement('span'); e.textContent = w + (j < ws.length - 1 ? ' ' : ''); e.style.color = COLORS[(n++) % 4]; line.appendChild(e); });
+      const sep = document.createElement('i'); sep.className = 'sep ' + SEP[i % 4]; sep.style.setProperty('--sc', COLORS[(i + 2) % 4]); sep.setAttribute('aria-hidden', 'true');
+      span.append(line, sep); f.appendChild(span);
+    });
+    return f;
+  }
+  track.append(tickerRun(), tickerRun());
+
+  // ── 3D ㄴ-corner LED: one 2:1 broadcast clip, drawn half to each face. Cycles A → B → C until the viewer picks one.
+  const VERS = {
+    a: { src: 'media/a.mp4', poster: 'media/a.jpg', cap: 'A 키네틱 · 송출 화면 30초', color: 'var(--va)' },
+    b: { src: 'media/b.mp4', poster: 'media/b.jpg', cap: 'B 코너 입체 · 둥근 모서리, 대각선 맞은편 35m 시점에 맞춘 송출 화면', color: 'var(--vb)' },
+    c: { src: 'media/c.mp4', poster: 'media/c.jpg', cap: 'C 엑스레이 · 송출 화면 30초', color: 'var(--vc)' },
+  };
+  const ORDER = ['a', 'b', 'c'];
+  // 둥근 모서리: 한 장(2:1) 송출 화면을 왼쪽 평면 – 둥근 가운데(띠 10개) – 오른쪽 평면에 이어 붙인다.
+  // 반지름은 아직 모르므로 둥근 부분을 2,500px 중 320px(반지름 약 1.6m)로 가정한다. 길이 단위는 면 너비(F), 전체 2F.
+  const rig = document.getElementById('ledRig'), CURVE = 320 / 2500, NS = 10;
+  const PANELS = [{ ang: -45, len: 1 - CURVE }];
+  for (let k = 0; k < NS; k++) PANELS.push({ ang: -45 + 90 * (k + .5) / NS, len: 2 * CURVE / NS });
+  PANELS.push({ ang: 45, len: 1 - CURVE });
+  { let s0 = 0; PANELS.forEach((p, i) => {
+    p.s0 = s0; s0 += p.len;
+    p.el = document.createElement('div'); p.el.className = 'face' + (i === 0 ? ' end-l' : i === PANELS.length - 1 ? ' end-r' : '');
+    const sh = Math.sin(p.ang * Math.PI / 180) / Math.SQRT1_2; // -1 왼쪽 평면(그늘) … +1 오른쪽 평면(빛)
+    p.el.style.setProperty('--shc', sh < 0 ? `rgba(0,0,0,${(-sh * .14).toFixed(3)})` : `rgba(255,255,255,${(sh * .05).toFixed(3)})`);
+    p.c = document.createElement('canvas'); p.c.className = 'scr'; p.el.appendChild(p.c); rig.appendChild(p.el);
+  }); }
+  function layoutRig() {
+    const F = rig.offsetWidth / 2; let x = 0, z = 0;
+    PANELS.forEach(p => { p.x = x; p.z = z; const a = p.ang * Math.PI / 180, w = p.len * F; x += w * Math.cos(a); z -= w * Math.sin(a); });
+    const cx = x / 2, zMax = Math.max(...PANELS.map(p => p.z));
+    PANELS.forEach(p => {
+      p.el.style.width = (p.len * F + .8).toFixed(2) + 'px'; // 띠 사이 틈이 보이지 않게 조금 겹친다
+      p.el.style.transform = `translate3d(${(p.x - cx + F).toFixed(2)}px,0,${(p.z - zMax).toFixed(2)}px) rotateY(${p.ang.toFixed(2)}deg)`;
+    });
+  }
+  const cap = document.getElementById('ledCap'), run = document.getElementById('ledRun');
+  const sw = [...document.querySelectorAll('.vswitch button')];
+  const ledV = document.createElement('video');
+  ledV.className = 'led-src'; ledV.muted = true; ledV.playsInline = true; ledV.preload = reduce ? 'none' : 'auto';
+  ledV.setAttribute('muted', ''); ledV.setAttribute('aria-hidden', 'true');
+  Object.assign(ledV.style, { position: 'absolute', width: '1px', height: '1px', opacity: '0', pointerEvents: 'none' });
+  document.querySelector('.led').appendChild(ledV);
+  const posters = {}; ORDER.forEach(k => { const im = new Image(); im.src = VERS[k].poster; im.onload = () => { if (k === cur) drawLed(); }; posters[k] = im; });
+  let cur = 'a', picked = false, visible = true;
+  function sizeScreens() { layoutRig(); const F = rig.offsetWidth / 2, d = Math.min(2, devicePixelRatio || 1); PANELS.forEach(p => { p.c.width = Math.max(1, Math.round((p.len * F + .8) * d)); p.c.height = Math.max(1, Math.round(F * d)); }); }
+  function drawLed() {
+    const src = ledV.readyState >= 2 && ledV.currentSrc.endsWith(VERS[cur].src) ? ledV : posters[cur];
+    const w = src.videoWidth || src.naturalWidth, h = src.videoHeight || src.naturalHeight; if (!w) return;
+    PANELS.forEach(p => p.c.getContext('2d').drawImage(src, p.s0 / 2 * w, 0, Math.min(p.len / 2 * w, w - p.s0 / 2 * w), h, 0, 0, p.c.width, p.c.height));
+  }
+  function setVersion(k, byUser) {
+    if (byUser) picked = true;
+    cur = k;
+    sw.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === k)));
+    cap.textContent = VERS[k].cap;
+    run.parentElement.style.setProperty('--run', VERS[k].color);
+    ledV.loop = picked;
+    ledV.src = VERS[k].src;
+    drawLed();
+    if (!reduce && visible) ledV.play().catch(() => {});
+  }
+  sw.forEach(b => b.addEventListener('click', () => setVersion(b.dataset.v, true)));
+  ledV.addEventListener('ended', () => { if (!picked) setVersion(ORDER[(ORDER.indexOf(cur) + 1) % 3], false); });
+  sizeScreens();
+  addEventListener('resize', () => { sizeScreens(); drawLed(); });
+  setVersion('a', false);
+  if (!reduce && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => es.forEach(e => { visible = e.isIntersecting; if (visible) ledV.play().catch(() => {}); else ledV.pause(); }), { threshold: .1 }).observe(document.querySelector('.led-stage'));
+  }
+
+  // ── B: street view vs the flat broadcast file
+  const vidB = document.getElementById('vidB'), bStreet = document.getElementById('bStreet'), bFlat = document.getElementById('bFlat'), bNote = document.getElementById('bNote');
+  function setB(flat) {
+    bStreet.setAttribute('aria-pressed', String(!flat)); bFlat.setAttribute('aria-pressed', String(flat));
+    vidB.classList.toggle('wide', !flat);
+    vidB.poster = flat ? 'media/b.jpg' : 'media/b_sim.jpg';
+    vidB.src = flat ? 'media/b.mp4' : 'media/b_sim.mp4';
+    bNote.textContent = flat ? '실제로 LED에 보내는 화면입니다. 펼쳐 놓으면 비뚤어져 보이지만, 모서리에 걸면 입체로 맞춰집니다.' : '대각선 맞은편 보도에서 본 모습을 시뮬레이션했습니다.';
+    if (!reduce) vidB.play().catch(() => {});
+  }
+  bStreet.addEventListener('click', () => setB(false));
+  bFlat.addEventListener('click', () => setB(true));
+
+  // ── concept clips: light up the card for what is on screen now
+  document.querySelectorAll('.beats[data-video]').forEach(box => {
+    const v = document.getElementById(box.dataset.video), cards = [...box.querySelectorAll('.beat')];
+    let last = -1;
+    const sync = () => { const t = v.currentTime || 0; let i = 0; cards.forEach((c, j) => { if (t >= Number(c.dataset.a)) i = j; });
+      if (i !== last) { cards.forEach((c, j) => c.classList.toggle('on', j === i)); last = i; } };
+    v.addEventListener('timeupdate', sync); sync();
+  });
+  // 펼친 화면 그림의 바닥 막대: 가운데에서 끊지 않고 한 줄로
+  { const g = document.getElementById('stripBars'); let h = ''; for (let k = 0; k < 64; k++) { const bh = 4 + 14 * Math.abs(Math.sin(k * 1.7) * Math.cos(k * .53)); h += `<rect x="${(30 + k * 9.08).toFixed(1)}" y="${(326 - bh).toFixed(1)}" width="5" height="${bh.toFixed(1)}"/>`; } g.innerHTML = h; }
+
+  // ── 300 s plan: (logo 20 s + 4 slogans × 10 s) × 5, played 10x faster
+  const tlTrack = document.getElementById('tlTrack'), headEl = document.getElementById('tlHead');
+  const SEGT = []; { let a = 0; for (let b = 0; b < 5; b++) { SEGT.push({ a, d: 20, s: -1 }); a += 20; for (let i = 0; i < 4; i++) { SEGT.push({ a, d: 10, s: b * 4 + i }); a += 10; } } }
+  const segEls = SEGT.map(x => {
+    const e = document.createElement('div'); e.className = 'seg' + (x.s < 0 ? ' logo' : '');
+    e.style.setProperty('--g', x.d);
+    if (x.s < 0) e.textContent = '로고'; else e.style.setProperty('--segc', COLORS[x.s % 4]);
+    tlTrack.insertBefore(e, headEl); return e;
+  });
+  const head = headEl.firstElementChild, tTime = document.getElementById('tlTime'), tTxt = document.getElementById('tlTxt');
+  let lastSeg = -1;
+  function drawTimeline(ms) {
+    const t = ((ms / 100) % 300 + 300) % 300;
+    const W = tlTrack.getBoundingClientRect().width;
+    head.style.transform = `translateX(${(t / 300 * W).toFixed(1)}px)`;
+    const si = SEGT.findIndex(x => t < x.a + x.d);
+    const sec = Math.floor(t); tTime.textContent = Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+    if (si === lastSeg) return;
+    segEls.forEach((s, i) => s.classList.toggle('on', i === si)); lastSeg = si;
+    const sc = SEGT[si]; tTxt.innerHTML = '';
+    if (sc.s < 0) { tTxt.textContent = '로고 · 나은필병원'; tTxt.style.color = 'var(--fg-3)'; }
+    else { tTxt.style.color = ''; S[sc.s].split(/\s+/).forEach((w, j) => { const e = document.createElement('span'); e.textContent = w + ' '; e.style.color = COLORS[(sc.s + j) % 4]; tTxt.appendChild(e); }); }
+    if (!reduce) { tTxt.classList.remove('fly'); void tTxt.offsetWidth; tTxt.classList.add('fly'); }
+  }
+
+  // ── one beat clock drives the headline bar, the LED and the timeline
+  const t0 = performance.now(); let lastBeat = -1;
+  function frame(now) {
+    const ms = now - t0, beat = Math.floor(ms / BEAT);
+    if (beat !== lastBeat) { lastBeat = beat; if (!reduce && beat > 3 && beat % 2 === 0) { wordIdx = (wordIdx + 1) % words.length; placeBar(wordIdx); } }
+    drawTimeline(reduce ? 0 : ms);
+    if (!ledV.paused) { drawLed(); if (ledV.duration) run.style.transform = `scaleX(${(ledV.currentTime / ledV.duration).toFixed(4)})`; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // ── videos play only while visible, and never for reduced motion
+  const vids = [...document.querySelectorAll('video:not(.led-src)')];
+  if (reduce) vids.forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+  else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: .2 });
+    vids.forEach(v => io.observe(v));
+  }
+
+  // ── copy buttons
+  document.querySelectorAll('.cbox button').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.src), text = el.textContent.trim();
+    const done = () => { b.textContent = '복사됨'; setTimeout(() => b.textContent = '복사', 1600); };
+    const select = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = '선택됨'; setTimeout(() => b.textContent = '복사', 1600); };
+    try { navigator.clipboard.writeText(text).then(done, select); } catch (e) { select(); }
+  }));
+})();
+</script>
+
+</body>
+</html>
