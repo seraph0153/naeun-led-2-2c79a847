@@ -116,8 +116,8 @@ h1,h2{text-wrap:balance}
 .facts i.s-c{border-radius:50%}.facts i.s-t{clip-path:polygon(50% 0,100% 100%,0 100%)}.facts i.s-d{transform:rotate(45deg)}
 
 /* ── 3D corner LED. Perspective matches the corner version's design viewpoint:
-      eye 35 m out on the diagonal at 1.6 m, screen 18.88 × 9.6 m (drawing) from 5 m above the street (assumed).
-      So perspective = 3.5 faces, and the eye sits 1.34 faces below the top edge.
+      illustrative eye 35 m out on the diagonal, 1.34 faces below the top edge (perspective = 3.5 faces), so the corner reads at card size.
+      B itself is computed for the real rooftop (LED bottom ~40 m on a 9-storey building, eye 100 m out); that view is the b_sim video.
       The real corner is rounded (R 1,222 mm per the drawing), so the rig is a chain: left flat → 10 narrow strips around the curve → right flat (built in JS). */
 .led{--face:clamp(126px,19vw,244px);position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;margin:0;min-width:0}
 .led-stage{position:relative;width:calc(var(--face)*1.62);max-width:100%;height:calc(var(--face)*1.2);perspective:calc(var(--face)*3.5);perspective-origin:50% calc(var(--face)*1.44)}
@@ -396,21 +396,21 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
 
         <article class="card ver" id="ver-b" style="--tone:var(--vb)">
           <div class="ver-media">
-            <video class="wide" id="vidB" src="media/b_sim.mp4" poster="media/b_sim.jpg" muted loop playsinline autoplay preload="metadata" aria-label="B안 코너 입체: 건물 모서리가 유리 상자처럼 열리고 러너와 병원 로고가 길 쪽으로 튀어나오는 장면을 거리에서 본 모습"></video>
+            <video class="wide" id="vidB" src="media/b_sim.mp4" poster="media/b_sim.jpg" muted loop playsinline autoplay preload="metadata" aria-label="B안 코너 입체: 9층 건물 옥상의 LED 모서리가 유리 상자처럼 열리고 러너와 병원 로고가 길 쪽으로 튀어나오는 장면을 대각선 맞은편 거리에서 올려다본 모습"></video>
             <span class="ver-letter" aria-hidden="true">B</span>
             <div class="mini" role="group" aria-label="B안 보기 방식">
               <button type="button" id="bStreet" aria-pressed="true">거리에서 본 모습</button>
               <button type="button" id="bFlat" aria-pressed="false">송출 원본</button>
             </div>
-            <p class="media-note" id="bNote">대각선 맞은편 보도에서 본 모습을 시뮬레이션했습니다.</p>
+            <p class="media-note" id="bNote">9층 옥상의 LED를 대각선 맞은편 100m에서 올려다본 모습을 시뮬레이션했습니다.</p>
           </div>
           <div class="ver-body">
             <div class="ver-top"><span class="chip mood">화제</span><span class="chip">30초 샘플</span></div>
             <h3>코너 입체 (아나모픽)</h3>
-            <p>건물 모서리 두 면이 하나의 유리 상자처럼 열리고, 그 안에서 3D 글자와 러너, 마지막에는 두께 있는 병원 로고(두 손 심벌과 이름)가 길 쪽으로 튀어나옵니다. 1차 제안서에서 말씀드린 '모서리 입체 착시'를 실제로 구현한 시안입니다. 도면의 둥근 모서리(반지름 1,222mm)와 화면 크기(18,880 × 9,600mm)로 입체 착시를 계산했고, 상자 테두리와 안쪽 방 벽도 기둥 없이 둥글게 이어집니다.</p>
+            <p>건물 모서리 두 면이 하나의 유리 상자처럼 열리고, 그 안에서 3D 글자와 러너, 마지막에는 두께 있는 병원 로고(두 손 심벌과 이름)가 길 쪽으로 튀어나옵니다. 1차 제안서에서 말씀드린 '모서리 입체 착시'를 실제로 구현한 시안입니다. 도면의 둥근 모서리(반지름 1,222mm)와 화면 크기(18,880 × 9,600mm), 9층 건물 옥상이라는 설치 높이로 입체 착시를 계산했고, 상자 테두리와 안쪽 방 벽도 기둥 없이 둥글게 이어집니다.</p>
             <dl class="ver-dl">
               <div><dt>좋은 점</dt><dd><ul><li>지나가는 사람이 사진을 찍어 SNS에 올릴 만한 장면을 만듭니다.</li><li>입체는 로고 화면(20초 × 5)에 쓰고, 슬로건은 평면으로 두어 읽기 쉽게 구성합니다.</li></ul></dd></div>
-              <div class="warn"><dt>고려할 점</dt><dd><ul><li>입체감은 한 지점(예: 대각선 횡단보도)에서 가장 정확하고, 다른 위치에서는 약해집니다.</li><li>LED 아래끝 높이는 지상 5m, 주 시점은 대각선 맞은편 보도로 가정했습니다. 실제 높이와 많이 보는 위치를 알려 주시면 그 값으로 다시 계산합니다.</li></ul></dd></div>
+              <div class="warn"><dt>고려할 점</dt><dd><ul><li>입체감은 한 지점에서 가장 정확하고, 다른 위치에서는 약해집니다. 옥상이라 건물 바로 아래에서는 너무 올려다보게 되므로, 교차로 건너편처럼 조금 떨어진 곳에서 가장 잘 보입니다.</li><li>9층 옥상(조감도의 짙은 코어 위)이라 LED 아래끝을 지상 약 40m로, 주 시점은 대각선 맞은편 100m로 잡았습니다. 실제 건물 높이와 사람들이 많이 보는 위치를 알려 주시면 그 값으로 다시 계산합니다.</li></ul></dd></div>
             </dl>
           </div>
         </article>
@@ -448,7 +448,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
             <tr><th scope="row">화면 밝기</th><td>밝은 바탕</td><td>밝은 상자 안, 남색 테두리</td><td>어두운 바탕</td></tr>
             <tr><th scope="row">슬로건 읽기</th><td>가장 빠름</td><td>슬로건은 평면으로 읽기 쉽게</td><td>스캔이 지나간 뒤 읽힘</td></tr>
             <tr><th scope="row">잘 보이는 위치</th><td>교차로 어디서나</td><td>대각선 정면에서 가장 입체적</td><td>교차로 어디서나</td></tr>
-            <tr><th scope="row">더 필요한 현장 정보</th><td>없음(도면 반영)</td><td>LED 아래끝 높이, 주로 보는 위치</td><td>없음(도면 반영)</td></tr>
+            <tr><th scope="row">더 필요한 현장 정보</th><td>없음(도면 반영)</td><td>건물 실제 높이(m), 주로 보는 위치</td><td>없음(도면 반영)</td></tr>
             <tr><th scope="row">지금 있는 시안</th><td>5분 전체</td><td>30초 샘플</td><td>30초 샘플</td></tr>
           </tbody>
         </table>
@@ -642,7 +642,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
       <ol class="todo">
         <li class="card"><b>시안 고르기</b><span>A·B·C 중 하나를 골라 주세요. 두 시안을 섞는 구성도 상의할 수 있습니다.</span></li>
         <li class="card"><b>계약서 확인과 서명</b><span>메일로 보내드린 계약서를 확인하신 뒤 서명해 주세요.</span></li>
-        <li class="card"><b>B안이면 설치 높이 알려 주기</b><span>보내 주신 도면의 화면 크기와 모서리 반지름은 모두 반영했습니다. B안을 고르시면 LED 아래끝이 땅에서 몇 m인지와 사람들이 가장 많이 보는 위치만 알려 주세요.</span></li>
+        <li class="card"><b>B안이면 건물 높이·보는 위치 알려 주기</b><span>도면의 화면 크기·모서리 반지름과 9층 옥상 설치는 모두 반영했습니다. B안을 고르시면 건물의 실제 높이(m)와 사람들이 가장 많이 보는 위치(예: 어느 교차로 쪽)만 알려 주세요.</span></li>
       </ol>
     </div>
   </section>
@@ -716,7 +716,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
   // ── 3D ㄴ-corner LED: one 2:1 broadcast clip, drawn half to each face. Cycles A → B → C until the viewer picks one.
   const VERS = {
     a: { src: 'media/a.mp4', poster: 'media/a.jpg', cap: 'A 키네틱 · 송출 화면 30초', color: 'var(--va)' },
-    b: { src: 'media/b.mp4', poster: 'media/b.jpg', cap: 'B 코너 입체 · 둥근 모서리, 대각선 맞은편 35m 시점에 맞춘 송출 화면', color: 'var(--vb)' },
+    b: { src: 'media/b.mp4', poster: 'media/b.jpg', cap: 'B 코너 입체 · 9층 옥상, 대각선 맞은편 100m 시점에 맞춘 송출 화면', color: 'var(--vb)' },
     c: { src: 'media/c.mp4', poster: 'media/c.jpg', cap: 'C 엑스레이 · 송출 화면 30초', color: 'var(--vc)' },
   };
   const ORDER = ['a', 'b', 'c'];
@@ -784,7 +784,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-betw
     vidB.classList.toggle('wide', !flat);
     vidB.poster = flat ? 'media/b.jpg' : 'media/b_sim.jpg';
     vidB.src = flat ? 'media/b.mp4' : 'media/b_sim.mp4';
-    bNote.textContent = flat ? '실제로 LED에 보내는 화면입니다. 펼쳐 놓으면 비뚤어져 보이지만, 모서리에 걸면 입체로 맞춰집니다.' : '대각선 맞은편 보도에서 본 모습을 시뮬레이션했습니다.';
+    bNote.textContent = flat ? '실제로 LED에 보내는 화면입니다. 펼쳐 놓으면 비뚤어져 보이지만, 모서리에 걸면 입체로 맞춰집니다.' : '9층 옥상의 LED를 대각선 맞은편 100m에서 올려다본 모습을 시뮬레이션했습니다.';
     if (!reduce) vidB.play().catch(() => {});
   }
   bStreet.addEventListener('click', () => setB(false));
